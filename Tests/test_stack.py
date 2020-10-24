@@ -1,6 +1,7 @@
 from unittest import TestCase
 
-from stack import Stack
+from stack import Stack, EmptyStackError, NotEnoughtElements
+
 
 class TestStackOperations(TestCase):
     def setUp(self):
@@ -43,6 +44,16 @@ class TestStackOperations(TestCase):
         self.assertEqual(self.stack.size, 0)
 
     def test_should_raise_when_called_pop_on_empty_stack(self):
-        self.fail("Not implemented yet")
+        self.assertRaises(EmptyStackError, self.stack.pop)
 
+    def test_multi_pop_raises_if_num_of_element_is_less_then_in_stack(self):
+        self.assertRaises(NotEnoughtElements, self.stack.multi_pop, 2)
 
+    def test_multi_pop_should_return_two_elements(self):
+        expected = [9, 8, 7, 6]
+        for elem in range(10):
+            self.stack.push(elem)
+
+        result = self.stack.multi_pop(4)
+
+        self.assertEqual(result, expected)

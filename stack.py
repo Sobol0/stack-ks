@@ -1,3 +1,9 @@
+class EmptyStackError(Exception):
+    pass
+
+class NotEnoughtElements(Exception):
+    pass
+
 class Stack:
     def __init__(self):
         self._data = []
@@ -11,8 +17,13 @@ class Stack:
 
     def pop(self):
         if not self._data:
-            raise EmtyStackError
+            raise EmptyStackError
         return self._data.pop()
+
+    def multi_pop(self, n):
+        if len(self._data) < n:
+            raise NotEnoughtElements
+        return [self.pop() for _ in range(n)]
 
     def peek(self):
         return self._data[-1]
