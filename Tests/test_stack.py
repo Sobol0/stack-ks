@@ -42,7 +42,7 @@ class TestStackOperations(TestCase):
 
         self.assertEqual(self.stack.size, 0)
 
-    def test_should_raise_when_calles_pop_on_empty_stack(self):
+    def test_should_raise_when_called_pop_on_empty_stack(self):
         self.fail("Not implemented yet")
 
 
